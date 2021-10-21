@@ -20,9 +20,17 @@ curl localhost:8080/filter \
   -d '{"body": "asdf foo zxcv"}'
 ```
 
-Create container & run with docker:
+Create JVM container
 ```
 ./gradlew bootBuildImage --imageName=explicit-filter
+```
 
+Create native container
+```
+./gradlew bootBuildImageNative --imageName=explicit-filter
+```
+
+run with docker:
+```
 docker run -it -p8080:8080 explicit-filter
 ```

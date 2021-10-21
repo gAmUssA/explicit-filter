@@ -13,8 +13,10 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.cloud:spring-cloud-starter-function-webflux:3.1.4")
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("io.cloudevents:cloudevents-spring:2.2.0")
+    runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
+    runtimeOnly("io.cloudevents:cloudevents-http-basic:2.2.0")
 }
 
 java {
@@ -25,7 +27,6 @@ java {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
-        //freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
 }
