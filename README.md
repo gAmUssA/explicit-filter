@@ -16,8 +16,8 @@ curl localhost:8080/filter \
   -H "ce-specversion: 1.0" \
   -H "ce-type: filter" \
   -H "ce-source: spring.io/spring-event" \
-  -H "Content-Type: application/json" \
-  -d '{"body": "asdf foo zxcv"}'
+  -H "Content-Type:" \
+  -d 'asdf foo zxcv'
 ```
 
 Create JVM container

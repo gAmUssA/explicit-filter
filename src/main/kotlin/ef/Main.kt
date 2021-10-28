@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.*
 
 
-data class Text(val body: String)
-
 @SpringBootApplication
 @RestController
 class Main {
@@ -27,7 +25,7 @@ class Main {
     val badWords = setOf("foo", "bar")
 
     @PostMapping("/filter")
-    fun filter(@RequestBody text: Text?, @RequestHeader headers: HttpHeaders?, serverHttpRequest: ServerHttpRequest): ResponseEntity<Text?>? {
+    fun filter(@RequestBody text: String?, @RequestHeader headers: HttpHeaders?, serverHttpRequest: ServerHttpRequest): ResponseEntity<String?>? {
 
         val attributes = CloudEventHttpUtils.fromHttp(headers)
             .withId(UUID.randomUUID().toString())
@@ -37,7 +35,7 @@ class Main {
 
         val outgoing = CloudEventHttpUtils.toHttp(attributes)
 
-        return text?.body?.split(Regex("\\s"))?.map { word ->
+        return text?.split(Regex("\\s"))?.map { word ->
             if (badWords.find { it == word.lowercase() } != null) {
                 word.map { "*" }.joinToString("")
             }
@@ -45,7 +43,7 @@ class Main {
                 word
             }
         }?.let { filtered ->
-            ResponseEntity.ok().headers(outgoing).body<Text>(text.copy(body = filtered.joinToString(" ")))
+            ResponseEntity.ok().headers(outgoing).body<String>(filtered.joinToString(" "))
         } ?: ResponseEntity.internalServerError().headers(outgoing).build()
     }
 }
