@@ -15,7 +15,6 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("io.cloudevents:cloudevents-spring:2.2.0")
-    runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
     runtimeOnly("io.cloudevents:cloudevents-http-basic:2.2.0")
 }
 
