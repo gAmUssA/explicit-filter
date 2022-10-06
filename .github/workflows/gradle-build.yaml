@@ -14,7 +14,7 @@ jobs:
         working-directory: ./
     runs-on: ubuntu-latest
     
-    name: Build (jar and docker) Demo Chat App
+    name: Build (jar and docker) Explicit filter
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
