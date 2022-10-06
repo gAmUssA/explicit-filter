@@ -52,8 +52,3 @@ jobs:
       - name: Push Manifest to Docker Hub
         run: docker manifest push gamussa/explicit-filter
         
-      - name: build and push native image
-        run: |
-          ./gradlew bootBuildImageNative --imageName=gamussa/explicit-filter-native
-          docker push gamussa/explicit-filter-native
-  
