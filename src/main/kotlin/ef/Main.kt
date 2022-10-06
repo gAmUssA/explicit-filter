@@ -20,7 +20,7 @@ import java.util.*
 @RestController
 class Main {
 
-    val badWords = setOf("foo", "bar")
+    val badWords = setOf("foo", "bar", "baz", "yolo")
 
     @PostMapping("/filter")
     fun filter(@RequestBody maybeEvent: CloudEvent?, serverHttpRequest: ServerHttpRequest): CloudEvent? {
