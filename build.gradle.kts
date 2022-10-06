@@ -1,10 +1,10 @@
 plugins {
     application
-    kotlin("jvm")                              version "1.5.31"
-    kotlin("plugin.spring")                    version "1.5.31"
-    id("org.springframework.boot")             version "2.5.6"
-    id("io.spring.dependency-management")      version "1.0.11.RELEASE"
-    id("org.springframework.experimental.aot") version "0.10.2"
+    kotlin("jvm")                               version "1.6.21"
+    kotlin("plugin.spring")                     version "1.6.21"
+    id("org.springframework.boot")              version "2.7.4"
+    id("io.spring.dependency-management")       version "1.0.14.RELEASE"
+    id("org.springframework.experimental.aot") version "0.12.1"
 }
 
 repositories {
@@ -20,16 +20,16 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(11))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+        jvmTarget = "17"
     }
 }
-
 application {
     mainClass.set("ef.MainKt")
 }
