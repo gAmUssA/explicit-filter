@@ -9,3 +9,5 @@ spec:
     spec:
       containers:
         - image: gamussa/explicit-filter
+# use native image to improve startup time           
+#        - image: gamussa/explicit-filter-native
